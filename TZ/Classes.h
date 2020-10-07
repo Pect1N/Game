@@ -4,7 +4,7 @@ class Map
 {
 	int x_position = 10;
 	int y_position = 10;
-	int map[6][5] = {1,  0, 2,  0, 3,
+	int map[6][5] = {1, -1, 2, -1, 3,
 					 2, -1, 3, -1, 1,
 					 3,  0, 2,  0, 2,
 					 1, -1, 1, -1, 3,
