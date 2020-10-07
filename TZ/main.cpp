@@ -9,6 +9,7 @@ Map element;
 
 void show_map();
 void show_text();
+void show_win();
 
 int main()
 {
@@ -21,8 +22,14 @@ int main()
 				window.close();
 		}
 		window.clear();
-		show_map();
-		show_text();
+		// if no equal collons
+		if (!win_check(element))
+		{
+			show_map();
+			show_text();
+		}
+		else
+			show_win();
 		window.display();
 	}
 
@@ -82,7 +89,10 @@ void show_map() // show the game map from massive
 		}
 		// back to started x coordinate and up y coordinate
 		element.set_x_position(10);
-		element.set_y_position(element.get_y_position() + 100);
+		if (i == 0)
+			element.set_y_position(element.get_y_position() + 130);
+		else
+			element.set_y_position(element.get_y_position() + 100);
 	}
 	// back to start y coordinate for new drawing
 	element.set_y_position(10);
@@ -185,4 +195,19 @@ void show_text() // show text for help
 
 	element.set_x_position(10);
 	element.set_y_position(10);
+}
+
+void show_win()
+{
+	Font font;
+	font.loadFromFile("CyrilicOld.ttf");
+	Text text("", font, 40);
+	text.setFillColor(Color::White);
+
+	element.set_x_position(550);
+	element.set_y_position(200);
+
+	text.setString("You Win!");
+	text.setPosition(element.get_x_position(), element.get_y_position());
+	window.draw(text);
 }
